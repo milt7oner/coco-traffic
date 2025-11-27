@@ -6,7 +6,7 @@ const turnLeftButton = document.getElementById('turn-left');
 const turnRightButton = document.getElementById('turn-right');
 const bodyDetection = document.getElementById('body-detection');
 
-const desiredClasses = ['person', 'bicycle', 'motorbike', 'bus'];
+const desiredClasses = ['person', 'bicycle', 'motorbike', 'bus','car'];
 
 const WS_URL = 'ws://localhost:8080';
 const ws = new WebSocket(WS_URL);
