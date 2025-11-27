@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de Luces del Vehículo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 1s ease-in-out, color 1s ease-in-out;
+            background-color: #f0f0f0; 
+            color: #000;
+            font-family: Arial, sans-serif;
+        }
+        #car-front {
+            width: 300px;
+            height: 150px;
+            background-color: #444;
+            border-radius: 10px 10px 50px 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+        .headlight {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #333; 
+            border: 3px solid #000;
+            transition: all 0.2s ease-in-out, transform 0.4s ease; /* Transición suave para el giro */
+        }
+        /* Estado APAGADO (default) */
+        .off {
+            background-color: #333;
+            box-shadow: none;
+        }
+        /* Estado LUCES BAJAS */
+        .low-beam-on {
+            background-color: #ffe082; 
+            box-shadow: 0 0 15px 5px rgba(255, 224, 130, 0.8);
+        }
+        /* Estado LUCES ALTAS */
+        .high-beam-on {
+            background-color: #ffffa0; 
+            box-shadow: 0 0 30px 10px rgba(255, 255, 160, 1), 0 0 50px 15px rgba(255, 255, 160, 0.6);
+        }
+        
+        /* --- Efecto de Giro (Adaptative Front Lighting System - AFS) --- */
+        
+        /* Giro a la Izquierda: Movimiento Principal (Faro Izquierdo) */
+        .turn-left-main {
+            /* Gira y se proyecta agresivamente hacia afuera/izquierda */
+            transform: skewY(15deg) translateX(-8px) scale(1.1);
+        }
+        /* Giro a la Izquierda: Movimiento Asistido (Faro Derecho) */
+        .turn-left-assist {
+            /* Gira ligeramente hacia el mismo lado, ensanchando la luz */
+            transform: skewY(3deg) translateX(-2px);
+        }
+        
+        /* Giro a la Derecha: Movimiento Principal (Faro Derecho) */
+        .turn-right-main {
+            /* Gira y se proyecta agresivamente hacia afuera/derecha */
+            transform: skewY(-15deg) translateX(8px) scale(1.1);
+        }
+        /* Giro a la Derecha: Movimiento Asistido (Faro Izquierdo) */
+        .turn-right-assist {
+            /* Gira ligeramente hacia el mismo lado, ensanchando la luz */
+            transform: skewY(-3deg) translateX(2px);
+        }
+
+        /* --- Estado e Información --- */
+        #current-status {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        #turn-status {
+            font-size: 1em;
+            color: #666;
+        }
+    </style>
+</head>
+<body id="body-lights">
+    <h1>Simulador de Luces de Coche</h1>
+    <p>La lógica de las luces se maneja automáticamente según el modo Día/Noche y la detección.</p>
+    <div id="car-front">
+        <div id="left-light" class="headlight off"></div>
+        <div id="right-light" class="headlight off"></div>
+    </div>
+    <p id="current-status">Estado: Inicializando...</p>
+    <p id="turn-status">Giro: Recto</p>
+
+    <script src="luces.js"></script>
+</body>
+</html>
