@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detección de Objetos y Controles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            transition: background-image 1s ease-in-out, background-color 1s ease-in-out, color 1s ease-in-out;
+            background-image: url('https://picsum.photos/1920/1080?sky_day'); 
+            background-size: cover;
+            color: #000;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        body.night {
+            background-image: url('https://picsum.photos/1920/1080?sky_night'); 
+            color: #fff;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+            font-weight: bold;
+        }
+        #toggle-bg { background-color: #64b5f6; color: white; }
+        #toggle-bg:hover { background-color: #42a5f5; }
+        #toggle-high-beam { background-color: #ff9800; color: white; }
+        #toggle-high-beam:hover { background-color: #fb8c00; }
+        .turn-button { background-color: #4caf50; color: white; }
+        .turn-button:hover { background-color: #43a047; }
+
+        #webcam {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transform: scaleX(-1);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body id="body-detection">
+    <h1>Cámara y Controles de Luces</h1>
+    
+    <div class="controls">
+        <button id="toggle-bg">Modo: DÍA</button>
+        <button id="toggle-high-beam">Encender Luces Altas</button>
+        <button id="turn-left" class="turn-button">Girar Izquierda</button>
+        <button id="turn-right" class="turn-button">Girar Derecha</button>
+    </div>
+
+    <p id="status">Cargando modelo...</p>
+    <video id="webcam" autoplay muted playsinline></video>
+    
+    <!-- Scripts de TensorFlow.js y COCO-SSD -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <script src="deteccion.js"></script>
+</body>
+</html>
