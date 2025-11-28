@@ -4,7 +4,7 @@ const bodyLights = document.getElementById('body-lights');
 const statusElement = document.getElementById('current-status');
 const turnStatusElement = document.getElementById('turn-status');
 
-const WS_URL = 'ws://localhost:8080';
+const WS_URL = 'https://coco-traffic.onrender.com';
 const ws = new WebSocket(WS_URL);
 
 // --- Variables de Estado Global ---

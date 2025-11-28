@@ -8,7 +8,7 @@ const bodyDetection = document.getElementById('body-detection');
 
 const desiredClasses = ['person', 'bicycle', 'motorbike', 'bus','car'];
 
-const WS_URL = 'ws://localhost:8080';
+const WS_URL = 'https://coco-traffic.onrender.com';
 const ws = new WebSocket(WS_URL);
 
 let isDay = true; 
